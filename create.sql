@@ -3,7 +3,7 @@ USE lab_mysql;
 DROP TABLE IF EXISTS customers;
 CREATE TABLE customers (
 id INT AUTO_INCREMENT PRIMARY KEY,
-customer_id INT NOT NULL,
+customer_id VARCHAR(20) NOT NULL,
 name VARCHAR(255) NOT NULL,
 phone_number VARCHAR(15),
 email VARCHAR(255),
@@ -25,19 +25,19 @@ color VARCHAR(50)
 DROP TABLE IF EXISTS sales;
 CREATE TABLE sales (
 id INT AUTO_INCREMENT PRIMARY KEY,
-sales_id INT NOT NULL,
+sales_id VARCHAR(20) NOT NULL,
 name VARCHAR(100),
 store VARCHAR(100)
 );
 DROP TABLE IF EXISTS invoices;
 CREATE TABLE invoices (
 id INT AUTO_INCREMENT PRIMARY KEY,
-invoice_number INT NOT NULL,
+invoice_number VARCHAR(20) NOT NULL,
 date DATE,
-customer_id INT,
-car_id INT,
-sales_id INT,
-FOREIGN KEY (car_id) REFERENCES cars(car_id),
-FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
-FOREIGN KEY (sales_id) REFERENCES sales(sales_id)
+customer_id VARCHAR(20),
+car_id VARCHAR(20),
+sales_id VARCHAR(20),
+FOREIGN KEY (car_id) REFERENCES cars(id),
+FOREIGN KEY (customer_id) REFERENCES customers(id),
+FOREIGN KEY (sales_id) REFERENCES sales(id)
 );
